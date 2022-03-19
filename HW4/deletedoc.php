@@ -1,12 +1,18 @@
 <?php
 require_once("dbconfig.php");
 
-// ตรวจสอบว่ามีการ post มาจากฟอร์ม ถึงจะลบ
+
 if ($_POST){
-    // ดึงค่าที่โพสจากฟอร์มตาม name ที่กำหนดในฟอร์มมากำหนดให้ตัวแปร $id
+    
     $id = $_POST['id'];
 
-    // เตรียมคำสั่ง DELETE
+    $sql = "DELETE 
+            FROM doc_staff
+            WHERE doc_staff.doc_id = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+
     $sql = "DELETE 
             FROM documents
             WHERE id = ?";
