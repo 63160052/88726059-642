@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['loggined'])){
+    header('Location: login.php');
+}
 require_once("dbconfig.php");
 
 
@@ -34,6 +39,7 @@ if ($_POST){
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_object();
+    echo "<div align = center><h1> Welcome ".$_SESSION['stf_name'] . "</h1></div>";
 }
 ?>
 <!DOCTYPE html>

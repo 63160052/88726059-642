@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['loggined'])){
+    header('Location: login.php');
+}
 require_once("dbconfig.php");
 
 
@@ -32,6 +37,8 @@ if ($_POST){
  
     header("location: documents.php");
 }
+else{
+    echo "<div align = center><h1> Welcome ".$_SESSION['stf_name'] . "</h1></div>";}
 ?>
 <!DOCTYPE html>
 <html lang="en">

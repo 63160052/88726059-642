@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['loggined'])){
+    header('Location: login.php');
+}else{
+    echo "<div align = center><h1> Welcome ".$_SESSION['stf_name'] . "</h1></div>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +24,9 @@
     <div class="container">
         <h1>Orders | <a href='newdoc.php'><span class='glyphicon glyphicon-plus' ></span></a>
         |<a href='staff.php?id=$row->id'><span class='glyphicon glyphicon-user' ></span></a>
-        |<a href='selectdocument.php'><span class='glyphicon glyphicon-search'></span></a></h1>
+        |<a href='selectdocument.php'><span class='glyphicon glyphicon-search'></span></a>
+        <a class="pull-right" href='logout.php'><span class='glyphicon glyphicon-off'style = "color:#C71585"></span></a></h1></h1>
+
         <form action="#" method="post">
             <input type="text" name="kw" placeholder="Enter Order, Order name" value="">
             <input type="submit" >
